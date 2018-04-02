@@ -1,0 +1,58 @@
+// Place all the styles related to the Carts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form {
+    background-color: lightblue;
+    width: 200px;
+}
+.block_info {
+    border: 1px solid black;
+    width: 500px;
+}
+.bg-primary {
+    font-weight: 600;
+}
+
+table {
+    tr {
+        padding-bottom: 3px;
+    }
+    td {
+        border-right: 1px solid;
+    }
+    a {
+       display: block;
+        font-weight: 600;
+        height: 30px;
+        border-bottom: 3px solid black;
+        border-radius: 5px;        
+        width: 90px;
+        padding: 3px;
+        padding-left: 7px;
+       text-decoration: none;
+        color: #f3f3f3;
+        }
+    .buy {
+            background-color: dodgerblue;
+         &:hover {
+            background: blue;
+        }}
+    [data-confirm="Вы уверены?"] {
+            background-color: darkred;
+        &:hover {
+            background-color: red;
+        }}
+    .edit {
+         background-color: green;
+        &:hover {
+            background-color: limegreen;
+        }}
+    .name {
+        width: 350px
+    }
+    .name {
+        width: 350px
+    }
+    
+}

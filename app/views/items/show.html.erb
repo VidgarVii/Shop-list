@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Название:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Описание:</strong>
+  <%= @item.description %>
+</p>
+
+<p>
+  <strong>Цена:</strong>
+  <%= @item.price %>
+</p>
+
+<p>
+  <strong>Важность:</strong>
+  <%= @item.importance %>
+</p>
+<p>
+  <strong>Статус:</strong>
+  <%= @item.status %>
+</p>
+
+<%= link_to 'Edit', edit_cart_item_path(@item) %> |
+<%= link_to 'Back', carts_path %>

@@ -1,0 +1,12 @@
+.registr 
+  - if user_signed_in?
+    %h3 Добро пожаловать #{current_user.email}
+    = link_to 'Выйти', destroy_user_session_path, :method   => :delete 
+    %h4= link_to 'Войти в личный кабинет', carts_path
+  - else
+    = link_to 'Войдите под своей учетной записью',   new_user_session_path
+    = link_to 'Зарегистрируйтесь для использования сервиса', new_user_registration_path
+
+
+
+= image_tag("phon.jpg")

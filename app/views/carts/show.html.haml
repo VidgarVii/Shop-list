@@ -1,0 +1,68 @@
+<!--<p id="notice"><%= notice %></p>-->
+.block_info
+  %h2= "Список: #{@cart.name}"
+  /%h3= "ID пользователя: #{current_user.id} "
+  /%h3= "ID Карты #{@cart.user_id}"
+  %h3= "Список на сумму товаров, руб.: #{@cart.count_items}"
+  %h3= "Было купленно на сумму, руб.: "
+
+<br><br>
+
+<center>
+
+
+%table{:class => "table table-info table-hover border table-striped"}
+  %thead{:class=>"thead-primary"}
+    %tr
+      %th Статус
+      %th Название товара
+      %th Цена
+      %th Описание
+      %th Важность
+      %th{:colspan=>"3", :scope=>"col"}
+  %tbody
+    - @cart.items.each do |item|
+      %tr
+        %td{:class=>"status"}= image_tag("cart.png") if item.status==1
+        %td{:class=>"name"}= item.name
+        %td= item.price
+        %td{:class=>"name"}= item.description
+        %td= item.importance
+        %td= link_to "Куплено", [item.cart, item], {:class=>"buy"}
+        %td= link_to 'Изменить', [:edit, item.cart, item], {:class=>"edit"}
+        %td= link_to 'Удалить', [item.cart, item], method: :delete, data: { confirm: 'Вы уверены?'}
+    %tfoot
+      %tr{:class => "bg-primary"}
+        %td= @cart.items.count
+        %td На сумму товаров
+        %td= @cart.count_items
+        %td руб.
+        %td
+        %td
+        %td
+        %td
+    
+  
+%h4 Создать товар
+
+.form
+  = form_with(model: [ @cart, @cart.items.build ], local: true) do |form| 
+    .form-group
+      = form.label :name
+      = form.text_field :name, id: :item_name
+    .form-group
+      = form.label :description
+      = form.text_field :description, id: :item_description
+    .form-group
+      = form.label :price
+      = form.number_field :price, id: :item_price, in:1..1000000
+    .form-group
+      = form.label :importance
+      = form.number_field :importance, id: :item_importance, in: 1..10
+    = form.submit class: "btn btn-primary"
+
+
+<br>
+
+
+= link_to 'Back', carts_path

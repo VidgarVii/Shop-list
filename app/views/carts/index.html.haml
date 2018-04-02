@@ -1,0 +1,41 @@
+<!--<p id="notice"><%= notice %></p>-->
+%h1Списки покупок
+<br>
+
+
+%h4= link_to 'Создать новый список', new_cart_path
+
+<br><br><br>
+
+%table{:class => "table table-info table-hover border table-striped"}
+  %thead{:class => "thead-primary"}
+    %tr
+      %th Название списка
+      %th Дата создание
+      %th Общая сумма, р.
+      %th{:colspan => "3", :scope => "col"}
+  %tbody   
+    - @carts.each do |cart|
+      %tr
+        %td= cart.name
+        %td= cart.updated_at
+        %td= cart.count_items
+        %td= link_to 'Показать', cart, {:class=>"buy"}
+        %td= link_to 'Изменить', edit_cart_path(cart), {:class=>"edit"}
+        %td= link_to 'Удалить', cart, method: :delete, data: { confirm: 'Вы уверены?' }
+  %tfoot
+    %tr{:class => "bg-primary"}
+      %td= "Кол-во списков:  #{@carts.count}"
+      %td на сумму товаров
+      %td= "#{@total} руб."
+      %td
+      %td
+      %td
+    
+    
+  
+
+
+
+
+
